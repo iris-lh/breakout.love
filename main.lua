@@ -10,6 +10,7 @@ love.mouse.setVisible(false)
 love.mouse.setGrabbed(true)
 love.load = function()
   elements = {
+    border = Border(0, 0, win_w, win_h, false),
     player = Player(0, win_h - 40, 150, 20),
     ball = Ball(win_w / 2, win_h / 2, 10, 10),
     block1 = Block(50, 10),

@@ -1,6 +1,7 @@
 Player = require 'lib.player'
 Ball = require 'lib.ball'
 Block = require 'lib.block'
+Border = require 'lib.border'
 
 win_w = 800
 win_h = 600
@@ -16,6 +17,8 @@ love.load = ->
 
 	export elements = {
 
+		border:		Border 0, 0, win_w, win_h, false
+
 		player: 	Player 0, win_h-40, 150, 20
 		ball: 		Ball win_w/2, win_h/2, 10, 10
 		
@@ -28,6 +31,7 @@ love.load = ->
 		block7:		Block 650, 10
 		
 	}
+
 
 love.update = (dt) ->
 	for i,element in pairs elements
