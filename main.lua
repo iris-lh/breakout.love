@@ -1,6 +1,7 @@
 local Player = require('lib.player')
 local Ball = require('lib.ball')
 local Block = require('lib.block')
+local Border = require('lib.border')
 local win_w = 800
 local win_h = 600
 love.window.setMode(win_w, win_h)

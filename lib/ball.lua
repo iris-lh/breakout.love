@@ -5,7 +5,13 @@ do
   local _base_0 = {
     update = function(self)
       if self.is_alive then
-        return nil
+        self.x = self.x + self.x_vel
+        self.y = self.y + self.y_vel
+      end
+      if self.collide then
+        self.x_vel = -self.x_vel
+        self.y_vel = -self.y_vel
+        self.collide = false
       end
     end,
     draw = function(self)
