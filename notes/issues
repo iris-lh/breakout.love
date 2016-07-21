@@ -1,0 +1,16 @@
+
+Collision is buggy
+
+	collision between ball and blocks
+
+		some times collision will occur from too far away
+
+		some times the ball will get caught inside the blocks and bounce around inside
+
+		sometimes the ball goes straight through the block 
+
+			kills block
+
+			ball does not change direction
+
+			>> seems to happen if the corners strike eachother at high speed
