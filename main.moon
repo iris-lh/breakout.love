@@ -21,8 +21,8 @@ love.load = ->
 		
 		block1:		Block 50, 10
 		block2:		Block 150, 10
-		block3:		Block 250, 10
 		block4:		Block 350, 10
+		block3:		Block 250, 10
 		block5:		Block 450, 10
 		block6:		Block 550, 10
 		block7:		Block 650, 10
@@ -53,8 +53,6 @@ love.update = (dt) ->
 love.draw = ->
 	for i,element in pairs elements
 		element\draw!
-
-
 
 	love.graphics.print elements.ball.x_vel, 10, 10
 	love.graphics.print elements.ball.y_vel, 10, 25
