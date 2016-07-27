@@ -3,6 +3,8 @@ Ball = require 'lib.ball'
 Block = require 'lib.block'
 require 'settings'
 
+require 'settings'
+
 export win_w, win_h = love.window.getMode!
 
 
