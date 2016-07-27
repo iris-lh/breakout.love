@@ -5,7 +5,7 @@ class Block
 	update: (dt) =>
 
 		--block's collisions--
-		if @is_alive == true
+		if @is_alive
 
 			--top side--
 			if ball.y + ball.h >= @y and ball.y + ball.h < @y + @h / 2 and
