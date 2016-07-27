@@ -10,7 +10,7 @@ love.mouse.setVisible false
 
 export mouse_ctrl = true
 
-
+camera_enabled = false
 
 black = {0, 0, 0}
 white = {255, 255, 255}
@@ -96,7 +96,7 @@ love.update = (dt) ->
 			if element.is_alive == true
 				element\update!	
 	
-		ball\update!
+		--ball\update!
 	
 	if love.keyboard.isDown 'escape'
 		love.event.quit!
@@ -115,8 +115,9 @@ love.draw = ->
 		love.graphics.print ('fps: '..fps), (10), win_h-75
 
 		--camera
-		love.graphics.translate (mouse_x*-1)+win_w/2, 0 --(mouse_y*-1)+win_h/2
-		--love.graphics.scale(ball.y/100, ball.y/100)
+		if camera_enabled
+			love.graphics.translate (mouse_x*-1)+win_w/2, 0 --(mouse_y*-1)+win_h/2
+		
 
 		love.graphics.setBackgroundColor bg_color
 		love.graphics.setColor fg_color
