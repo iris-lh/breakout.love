@@ -4,7 +4,7 @@ Block = require 'lib.block'
 
 export win_w, win_h = love.window.getMode!
 
-export mouse_x, mouse_y = love.mouse.getPosition!
+
 love.mouse.setGrabbed true
 love.mouse.setVisible false
 
@@ -26,7 +26,7 @@ love.load = ->
 	export gamestate = 'playing'
 
 	export border = { x:0, y:0, w:win_w, h:win_h }
-	export ball = Ball 380, 280, 20, 20, 10, -10, '', true
+	export ball = Ball 380, 500, 20, 20, 10, -10, '', true
 
 	export elements = {
 
@@ -84,7 +84,7 @@ love.load = ->
 love.update = (dt) ->
 	export fps = love.timer.getFPS!
 
-	export mouse_x = love.mouse.getX!
+	export mouse_x, mouse_y = love.mouse.getPosition!
 
 	if ball.y > border.h
 		export gamestate = 'lost'
@@ -106,12 +106,19 @@ love.update = (dt) ->
 
 love.draw = ->
 
+	
+
 	if gamestate == 'playing'
+		love.graphics.print ('mouse_x: '..mouse_x), (10), win_h-60
+		love.graphics.print ('fps: '..fps), (10), win_h-75
+
+		--camera
+		love.graphics.translate (mouse_x*-1)+win_w/2, 0 --(mouse_y*-1)+win_h/2
+		--love.graphics.scale(ball.y/100, ball.y/100)
+
 		love.graphics.setBackgroundColor bg_color
 		love.graphics.setColor fg_color
 
-		love.graphics.print ('mouse_x: '..mouse_x), 10, win_h-60
-		love.graphics.print ('fps: '..fps), 10, win_h-75
 
 		ball\draw!
 		for i, element in pairs elements 
