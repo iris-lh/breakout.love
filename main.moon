@@ -2,20 +2,19 @@ Player = require 'lib.player'
 Ball = require 'lib.ball'
 Block = require 'lib.block'
 
-win_w = 800
-win_h = 600
+export win_w, win_h = love.window.getMode!
 
 export mouse_ctrl = true
 
-playing = true
-
 black = {0, 0, 0}
 white = {255, 255, 255}
-
 fg_color = white
 bg_color = black
+--gamestate = 'playing'
 
 love.load = ->
+
+	export gamestate = 'playing'
 
 	export border = { x:0, y:0, w:win_w, h:win_h }
 	export ball = Ball 380, 280, 20, 20, 10, -10, '', true
@@ -40,9 +39,9 @@ love.update = (dt) ->
 	export mouse_x = love.mouse.getX!
 
 	if ball.y > border.h
-		playing = false
+		export gamestate = 'lost'
 
-	if playing == true
+	if gamestate == 'playing'
 		for i, element in pairs elements
 			if element.is_alive == true
 				element\update!	
@@ -52,25 +51,26 @@ love.update = (dt) ->
 	if love.keyboard.isDown 'escape'
 		love.event.quit!
 
+	if love.keyboard.isDown 'r'
+		love.load!
+
 
 
 love.draw = ->
 
-	if playing == true
+	if gamestate == 'playing'
+		love.graphics.setBackgroundColor bg_color
+		love.graphics.setColor fg_color
+
 		love.graphics.print ball.x_vel, 10, 25
 		love.graphics.print ball.y_vel, 10, 40
-
 		love.graphics.print mouse_x, 10, 60
-
-		love.graphics.setBackgroundColor bg_color
-
-		love.graphics.setColor fg_color
 		
 		ball\draw!
 		for i, element in pairs elements 
 			element\draw!
 
-	elseif playing == false
+	elseif gamestate == 'lost'
 		love.graphics.setBackgroundColor 0, 0, 0
 		love.graphics.setColor 255,255,255
 		love.graphics.print 'ya blew it', 350, 300
