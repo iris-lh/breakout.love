@@ -7,11 +7,17 @@ win_h = 600
 
 gamestate = 'game'
 
+black = {0, 0, 0}
+white = {255, 255, 255}
+
+fg_color = white
+bg_color = black
+
 
 love.load = ->
 
 	export border = { x:0, y:0, w:win_w, h:win_h }
-	export ball = Ball 380, 280, 20, 20, 5, 5, '', true
+	export ball = Ball 380, 280, 20, 20, 5, -5, '', true
 
 	export elements = {
 

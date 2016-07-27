@@ -23,7 +23,7 @@ love.load = function()
     w = win_w,
     h = win_h
   }
-  ball = Ball(380, 280, 20, 20, 5, 5, '', true)
+  ball = Ball(380, 280, 20, 20, 5, -5, '', true)
   elements = {
     player = Player(300, 585, 250, 15, true, 0),
     block = Block(0, 0, 100, 20, true),
