@@ -47,9 +47,9 @@ love.draw = ->
 		love.graphics.print ball.x_vel, 10, 10
 		love.graphics.print ball.y_vel, 10, 25
 
-		love.graphics.setBackgroundColor 255, 255, 255
+		love.graphics.setBackgroundColor bg_color
 
-		love.graphics.setColor 0,0,0
+		love.graphics.setColor fg_color
 		
 		ball\draw!
 		for i, element in pairs elements 

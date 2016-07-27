@@ -4,6 +4,18 @@ local Block = require('lib.block')
 local win_w = 800
 local win_h = 600
 local gamestate = 'game'
+local black = {
+  0,
+  0,
+  0
+}
+local white = {
+  255,
+  255,
+  255
+}
+local fg_color = white
+local bg_color = black
 love.load = function()
   border = {
     x = 0,
@@ -43,8 +55,8 @@ love.draw = function()
   if gamestate == 'game' then
     love.graphics.print(ball.x_vel, 10, 10)
     love.graphics.print(ball.y_vel, 10, 25)
-    love.graphics.setBackgroundColor(255, 255, 255)
-    love.graphics.setColor(0, 0, 0)
+    love.graphics.setBackgroundColor(bg_color)
+    love.graphics.setColor(fg_color)
     ball:draw()
     for i, element in pairs(elements) do
       element:draw()
