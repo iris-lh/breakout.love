@@ -2,20 +2,14 @@ Player = require 'lib.player'
 Ball = require 'lib.ball'
 Block = require 'lib.block'
 
+require 'settings'
+
 export win_w, win_h = love.window.getMode!
 
 
 love.mouse.setGrabbed true
 love.mouse.setVisible false
 
-export mouse_ctrl = true
-
-camera_enabled = false
-
-black = {0, 0, 0}
-white = {255, 255, 255}
-fg_color = white
-bg_color = black
 
 blocks_w = 100
 blocks_h = 35
