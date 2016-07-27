@@ -22,7 +22,7 @@ love.load = ->
 	export gamestate = 'playing'
 
 	export border = { x:0, y:0, w:win_w, h:win_h }
-	export ball = Ball 380, 500, 20, 20, 7, -7, '', true
+	export ball = Ball 380, 500, 20, 20, ball_x_vel, ball_y_vel, '', true
 
 	export elements = {
 

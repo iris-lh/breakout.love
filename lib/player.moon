@@ -39,7 +39,7 @@ class Player
 			ball.x < @x + @w and ball.x + ball.w > @x  
 			ball.y_vel *= -1
 
-			if (ball.x >= @x) and (ball.x <= @x+a)
+			if (ball.x+ball.w/2 >= @x) and (ball.x+ball.w/2 <= @x+a)
 				if ball.x_vel > 0
 					ball.x_vel *= -1
 					
@@ -48,12 +48,12 @@ class Player
 
 				
 
-			elseif (ball.x > @x+a) and (ball.x < @x+a+b)
+			elseif (ball.x+ball.w/2 > @x+a) and (ball.x+ball.w/2 < @x+a+b)
 				ball.x_vel *= 0.6
 				ball.y_vel *= 0.9
 				
 
-			elseif (ball.x >= @x+a+b) and (ball.x <= @x+a+a+b)
+			elseif (ball.x+ball.w/2 >= @x+a+b) and (ball.x+ball.w/2 <= @x+a+a+b)
 
 				if ball.x_vel < 0
 					ball.x_vel *= -1
