@@ -10,6 +10,8 @@ love.mouse.setVisible false
 
 export mouse_ctrl = true
 
+
+
 black = {0, 0, 0}
 white = {255, 255, 255}
 fg_color = white
@@ -80,6 +82,7 @@ love.load = ->
 
 
 love.update = (dt) ->
+	export fps = love.timer.getFPS!
 
 	export mouse_x = love.mouse.getX!
 
@@ -108,7 +111,7 @@ love.draw = ->
 		love.graphics.setColor fg_color
 
 		love.graphics.print ('mouse_x: '..mouse_x), 10, win_h-60
-
+		love.graphics.print ('fps: '..fps), 10, win_h-75
 
 		ball\draw!
 		for i, element in pairs elements 
