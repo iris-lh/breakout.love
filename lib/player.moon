@@ -36,11 +36,13 @@ class Player
 		elseif ball.x + ball.w >= @x - @x_vel and ball.x + ball.w < @x + (@w / 4) and 
 			ball.y + ball.h > @y and ball.y < @y + @h
 			ball.x_vel *= -1
+			ball.y -= 15
 
 		--right--
 		elseif ball.x <= @x + @w - @x_vel and ball.x > @x + (@w - @w / 4) and 
 			ball.y + ball.h > @y and ball.y < @y + @h
 			ball.x_vel *= -1
+			ball.y -= 15
 			
 		--player and border--
 		--left--
