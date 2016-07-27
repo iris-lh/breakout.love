@@ -1,21 +1,23 @@
-win_w, win_h = love.window.getMode!
-
-
 
 class Ball
-	new: (@x=0, @y=0, @w=10, @h=10, @x_vel=5, @y_vel=-5, @is_alive=true, @collide=false) =>
+	new: (@x, @y, @w, @h, @x_vel, @y_vel,@collide, @is_alive) =>
 
-	update: =>
-		if @is_alive
-			@x += @x_vel
-			@y += @y_vel  
+	update: => 
+		--ball trajectory--
+		@x += @x_vel
+		@y += @y_vel
 
-		if @collide 
-			@x_vel = -@x_vel
-			@y_vel = -@y_vel
-			@collide = false
+		--ball right and left--
+		if @x + @w >= border.w or
+			@x <= border.x 
+			@x_vel *= -1
+		--@top--
+		if @y <= border.y 
+			@y_vel *= -1
 
 
 	draw: =>
-		if @is_alive
+		--draws ball--
+		if @is_alive == true
 			love.graphics.rectangle 'line', @x, @y, @w, @h
+			

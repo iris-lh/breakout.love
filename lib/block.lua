@@ -3,13 +3,27 @@ do
   local _class_0
   local _base_0 = {
     update = function(self)
-      if self.is_alive and self.collide then
-        self.collide = false
-        self.is_alive = false
+      if self.is_alive == true then
+        if ball.y + ball.h >= self.y and ball.y + ball.h < self.y + self.h / 2 and ball.x < self.x + self.w and ball.x + ball.w > self.x then
+          ball.y_vel = ball.y_vel * -1
+          self.is_alive = false
+        end
+        if ball.y <= self.y + self.h and ball.y + ball.h > self.y + self.h / 2 and ball.x < self.x + self.w and ball.x + ball.w > self.x then
+          ball.y_vel = ball.y_vel * -1
+          self.is_alive = false
+        end
+        if ball.x + ball.w > self.x and ball.x + ball.w < self.x + (self.w / 10) and ball.y + ball.h > self.y and ball.y < self.y + self.h then
+          ball.x_vel = ball.x_vel * -1
+          self.is_alive = false
+        end
+        if ball.x < self.x + self.w and ball.x > self.x + (self.w - self.w / 10) and ball.y + ball.h > self.y and ball.y < self.y + self.h then
+          ball.x_vel = ball.x_vel * -1
+          self.is_alive = false
+        end
       end
     end,
     draw = function(self)
-      if self.is_alive then
+      if self.is_alive == true then
         return love.graphics.rectangle('line', self.x, self.y, self.w, self.h)
       end
     end
@@ -17,23 +31,8 @@ do
   _base_0.__index = _base_0
   _class_0 = setmetatable({
     __init = function(self, x, y, w, h, is_alive, collide)
-      if x == nil then
-        x = 0
-      end
-      if y == nil then
-        y = 0
-      end
-      if w == nil then
-        w = 75
-      end
-      if h == nil then
-        h = 20
-      end
       if is_alive == nil then
         is_alive = true
-      end
-      if collide == nil then
-        collide = false
       end
       self.x, self.y, self.w, self.h, self.is_alive, self.collide = x, y, w, h, is_alive, collide
     end,

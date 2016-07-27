@@ -1,53 +1,27 @@
-local win_w, win_h = love.window.getMode()
 local Ball
 do
   local _class_0
   local _base_0 = {
     update = function(self)
-      if self.is_alive then
-        self.x = self.x + self.x_vel
-        self.y = self.y + self.y_vel
+      self.x = self.x + self.x_vel
+      self.y = self.y + self.y_vel
+      if self.x + self.w >= border.w or self.x <= border.x then
+        self.x_vel = self.x_vel * -1
       end
-      if self.collide then
-        self.x_vel = -self.x_vel
-        self.y_vel = -self.y_vel
-        self.collide = false
+      if self.y <= border.y then
+        self.y_vel = self.y_vel * -1
       end
     end,
     draw = function(self)
-      if self.is_alive then
+      if self.is_alive == true then
         return love.graphics.rectangle('line', self.x, self.y, self.w, self.h)
       end
     end
   }
   _base_0.__index = _base_0
   _class_0 = setmetatable({
-    __init = function(self, x, y, w, h, x_vel, y_vel, is_alive, collide)
-      if x == nil then
-        x = 0
-      end
-      if y == nil then
-        y = 0
-      end
-      if w == nil then
-        w = 10
-      end
-      if h == nil then
-        h = 10
-      end
-      if x_vel == nil then
-        x_vel = 5
-      end
-      if y_vel == nil then
-        y_vel = -5
-      end
-      if is_alive == nil then
-        is_alive = true
-      end
-      if collide == nil then
-        collide = false
-      end
-      self.x, self.y, self.w, self.h, self.x_vel, self.y_vel, self.is_alive, self.collide = x, y, w, h, x_vel, y_vel, is_alive, collide
+    __init = function(self, x, y, w, h, x_vel, y_vel, collide, is_alive)
+      self.x, self.y, self.w, self.h, self.x_vel, self.y_vel, self.collide, self.is_alive = x, y, w, h, x_vel, y_vel, collide, is_alive
     end,
     __base = _base_0,
     __name = "Ball"
