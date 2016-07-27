@@ -23,14 +23,16 @@ blocks_h = 35
 
 love.load = ->
 
+	mouse_x, mouse_y = love.mouse.getPosition!
+
 	export gamestate = 'playing'
 
 	export border = { x:0, y:0, w:win_w, h:win_h }
-	export ball = Ball 380, 500, 20, 20, 10, -10, '', true
+	export ball = Ball 380, 500, 20, 20, 12, -12, '', true
 
 	export elements = {
 
-		player:		Player 300, 585, 250, 15, true, 0
+		player:		Player mouse_x-125, 585, 200, 15, true, 0
 
 		block1: 	Block 0, 0, 100, blocks_h, true
 		block2: 	Block 100, 0, 100, blocks_h, true

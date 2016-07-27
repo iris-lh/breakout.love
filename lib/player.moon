@@ -54,9 +54,27 @@ class Player
 			@x = border.w - @w
 
 	draw: =>
-		--draws main paddle--
-		love.graphics.rectangle 'line', @x, @y, @w, @h
-		--draws left section--
-		love.graphics.rectangle 'line', @x, @y, @w - 220, @h
-		--draws right section--
-		love.graphics.rectangle 'line', @x, @y, @w - 30, @h
+		--some fancy phi math
+		a = @w*0.2764
+		b = a*1.618
+
+		--draws left segment--
+		love.graphics.rectangle 'line', @x, @y, a, @h
+
+		--draws middle segment--
+		love.graphics.rectangle 'line', @x+a, @y, b, @h
+
+		--draws right segment--
+		love.graphics.rectangle 'line', @x+a+b, @y, a, @h
+
+
+		--guidelines for paddle dimensions
+
+		--left edge
+		--love.graphics.line @x, @y-5, @x, @y-@h
+
+		--center
+		--love.graphics.line @x+@w/2, @y-5, @x+@w/2, @y-@h
+
+		--right edge
+		--love.graphics.line @x+@w, @y-5, @x+@w, @y-@h
