@@ -1,8 +1,8 @@
 
 class Ball
-	new: (@x, @y, @w, @h, @x_vel, @y_vel,@collide, @is_alive) =>
+	new: (@x, @y, @w, @h, @x_vel, @y_vel, @is_alive) =>
 
-	update: => 
+	update: (dt) => 
 		--ball trajectory--
 		@x += @x_vel
 		@y += @y_vel

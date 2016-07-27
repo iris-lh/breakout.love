@@ -1,8 +1,8 @@
 
 class Block 
-	new: (@x, @y, @w, @h, @is_alive = true, @collide) =>
+	new: (@x, @y, @w, @h, @is_alive = true) =>
 
-	update: =>
+	update: (dt) =>
 
 		--block's collisions--
 		if @is_alive == true
@@ -32,7 +32,7 @@ class Block
 				@is_alive = false
 
 	draw: =>
-		--draw's block--
+		--draws block--
 		if @is_alive == true
 			love.graphics.rectangle 'line', @x, @y, @w, @h
 			

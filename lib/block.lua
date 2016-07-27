@@ -2,7 +2,7 @@ local Block
 do
   local _class_0
   local _base_0 = {
-    update = function(self)
+    update = function(self, dt)
       if self.is_alive == true then
         if ball.y + ball.h >= self.y and ball.y + ball.h < self.y + self.h / 2 and ball.x < self.x + self.w and ball.x + ball.w > self.x then
           ball.y_vel = ball.y_vel * -1

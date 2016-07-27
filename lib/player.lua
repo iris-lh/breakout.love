@@ -2,7 +2,7 @@ local Player
 do
   local _class_0
   local _base_0 = {
-    update = function(self)
+    update = function(self, dt)
       self.x = self.x + self.x_vel
       if love.keyboard.isDown('right') then
         self.x_vel = 10

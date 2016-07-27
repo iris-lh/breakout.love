@@ -3,7 +3,7 @@ local Ball = require('lib.ball')
 local Block = require('lib.block')
 local win_w = 800
 local win_h = 600
-local gamestate = 'game'
+local playing = true
 local black = {
   0,
   0,
@@ -37,9 +37,9 @@ love.load = function()
 end
 love.update = function(dt)
   if ball.y > border.h then
-    gamestate = 'loser'
+    playing = false
   end
-  if gamestate == 'game' then
+  if playing == true then
     for i, element in pairs(elements) do
       if element.is_alive == true then
         element:update()
@@ -52,7 +52,7 @@ love.update = function(dt)
   end
 end
 love.draw = function()
-  if gamestate == 'game' then
+  if playing == true then
     love.graphics.print(ball.x_vel, 10, 10)
     love.graphics.print(ball.y_vel, 10, 25)
     love.graphics.setBackgroundColor(bg_color)
@@ -61,7 +61,7 @@ love.draw = function()
     for i, element in pairs(elements) do
       element:draw()
     end
-  elseif gamestate == 'loser' then
+  elseif playing == false then
     love.graphics.setBackgroundColor(0, 0, 0)
     love.graphics.setColor(255, 255, 255)
     return love.graphics.print('ya blew it', 350, 300)

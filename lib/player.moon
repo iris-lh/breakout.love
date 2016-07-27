@@ -1,7 +1,7 @@
 class Player
 	new: (@x, @y, @w, @h, @is_alive, @x_vel) =>
 
-	update: =>
+	update: (dt) =>
 		--moves player--
 		@x = @x + @x_vel
 
@@ -17,12 +17,12 @@ class Player
 		--player collisions--
 
 		--player and ball--
-		----top--
+		--top--
 		if ball.y + ball.h >= @y and ball.y + ball.h < @y + @h / 2 and
 			ball.x < @x + @w and ball.x + ball.w > @x  
 			ball.y_vel *= -1
 			
-		----left--
+		--left--
 		elseif ball.x + ball.w >= @x - @x_vel and ball.x + ball.w < @x + (@w / 4) and 
 			ball.y + ball.h > @y and ball.y < @y + @h
 			ball.x_vel *= -1

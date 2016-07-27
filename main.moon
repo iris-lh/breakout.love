@@ -5,13 +5,14 @@ Block = require 'lib.block'
 win_w = 800
 win_h = 600
 
-gamestate = 'game'
+playing = true
 
 black = {0, 0, 0}
 white = {255, 255, 255}
 
 fg_color = white
 bg_color = black
+
 
 
 love.load = ->
@@ -32,12 +33,14 @@ love.load = ->
 		block6: 	Block 720, 0, 80, 20, true
 	}
 
+
+
 love.update = (dt) ->
 
 	if ball.y > border.h
-		gamestate = 'loser'
+		playing = false
 
-	if gamestate == 'game'
+	if playing == true
 		for i, element in pairs elements
 			if element.is_alive == true
 				element\update!	
@@ -47,9 +50,11 @@ love.update = (dt) ->
 	if love.keyboard.isDown 'escape'
 		love.event.quit!
 
+
+
 love.draw = ->
 
-	if gamestate == 'game'
+	if playing == true
 		love.graphics.print ball.x_vel, 10, 10
 		love.graphics.print ball.y_vel, 10, 25
 
@@ -61,7 +66,7 @@ love.draw = ->
 		for i, element in pairs elements 
 			element\draw!
 
-	elseif gamestate == 'loser'
+	elseif playing == false
 		love.graphics.setBackgroundColor 0, 0, 0
 		love.graphics.setColor 255,255,255
 		love.graphics.print 'ya blew it', 350, 300

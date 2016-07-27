@@ -2,7 +2,7 @@ local Ball
 do
   local _class_0
   local _base_0 = {
-    update = function(self)
+    update = function(self, dt)
       self.x = self.x + self.x_vel
       self.y = self.y + self.y_vel
       if self.x + self.w >= border.w or self.x <= border.x then
