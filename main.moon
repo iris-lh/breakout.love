@@ -3,7 +3,10 @@ Ball = require 'lib.ball'
 Block = require 'lib.block'
 
 export win_w, win_h = love.window.getMode!
+
 export mouse_x, mouse_y = love.mouse.getPosition!
+love.mouse.setGrabbed true
+love.mouse.setVisible false
 
 export mouse_ctrl = true
 
@@ -11,6 +14,9 @@ black = {0, 0, 0}
 white = {255, 255, 255}
 fg_color = white
 bg_color = black
+
+blocks_w = 100
+blocks_h = 35
 
 
 love.load = ->
@@ -24,13 +30,50 @@ love.load = ->
 
 		player:		Player 300, 585, 250, 15, true, 0
 
-		block1: 	Block 0, 0, 100, 20, true
-		block2: 	Block 120, 0, 100, 20, true
-		block3: 	Block 240, 0, 100, 20, true
-		block4: 	Block 360, 0, 100, 20, true
-		block5: 	Block 480, 0, 100, 20, true
-		block6: 	Block 600, 0, 100, 20, true
-		block7: 	Block 720, 0, 80, 20, true
+		block1: 	Block 0, 0, 100, blocks_h, true
+		block2: 	Block 100, 0, 100, blocks_h, true
+		block3: 	Block 200, 0, 100, blocks_h, true
+		block4: 	Block 300, 0, 100, blocks_h, true
+		block5: 	Block 400, 0, 100, blocks_h, true
+		block6: 	Block 500, 0, 100, blocks_h, true
+		block7: 	Block 600, 0, 100, blocks_h, true
+		block8: 	Block 700, 0, 100, blocks_h, true
+
+		block9: 	Block 0, 0, 100, blocks_h*2, true
+		block10: 	Block 100, 0, 100, blocks_h*2, true
+		block11: 	Block 200, 0, 100, blocks_h*2, true
+		block12: 	Block 300, 0, 100, blocks_h*2, true
+		block13: 	Block 400, 0, 100, blocks_h*2, true
+		block14: 	Block 500, 0, 100, blocks_h*2, true
+		block15: 	Block 600, 0, 100, blocks_h*2, true
+		block16: 	Block 700, 0, 100, blocks_h*2, true
+
+		block17: 	Block 0, 0, 100, blocks_h*3, true
+		block18: 	Block 100, 0, 100, blocks_h*3, true
+		block19: 	Block 200, 0, 100, blocks_h*3, true
+		block20: 	Block 300, 0, 100, blocks_h*3, true
+		block21: 	Block 400, 0, 100, blocks_h*3, true
+		block22: 	Block 500, 0, 100, blocks_h*3, true
+		block23: 	Block 600, 0, 100, blocks_h*3, true
+		block24: 	Block 700, 0, 100, blocks_h*3, true
+
+		block25: 	Block 0, 0, 100, blocks_h*4, true
+		block26: 	Block 100, 0, 100, blocks_h*4, true
+		block27: 	Block 200, 0, 100, blocks_h*4, true
+		block28: 	Block 300, 0, 100, blocks_h*4, true
+		block29: 	Block 400, 0, 100, blocks_h*4, true
+		block30: 	Block 500, 0, 100, blocks_h*4, true
+		block31: 	Block 600, 0, 100, blocks_h*4, true
+		block32: 	Block 700, 0, 100, blocks_h*4, true
+
+		block33: 	Block 0, 0, 100, blocks_h*5, true
+		block34: 	Block 100, 0, 100, blocks_h*5, true
+		block35: 	Block 200, 0, 100, blocks_h*5, true
+		block36: 	Block 300, 0, 100, blocks_h*5, true
+		block37: 	Block 400, 0, 100, blocks_h*5, true
+		block38: 	Block 500, 0, 100, blocks_h*5, true
+		block39: 	Block 600, 0, 100, blocks_h*5, true
+		block40: 	Block 700, 0, 100, blocks_h*5, true
 	}
 
 	export blocks_left = 7
@@ -64,11 +107,7 @@ love.draw = ->
 		love.graphics.setBackgroundColor bg_color
 		love.graphics.setColor fg_color
 
-		love.graphics.print ball.x_vel, 10, 25
-		love.graphics.print ball.y_vel, 10, 40
-		love.graphics.print mouse_x, 10, 60
-		
-		love.graphics.print blocks_left, 10, 80
+		love.graphics.print ('mouse_x: '..mouse_x), 10, win_h-60
 
 
 		ball\draw!

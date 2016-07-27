@@ -19,5 +19,5 @@ class Ball
 	draw: =>
 		--draws ball--
 		if @is_alive
-			love.graphics.rectangle 'line', @x, @y, @w, @h
+			love.graphics.rectangle 'fill', @x, @y, @w, @h
 			
