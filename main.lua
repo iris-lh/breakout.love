@@ -3,6 +3,7 @@ local Ball = require('lib.ball')
 local Block = require('lib.block')
 local win_w = 800
 local win_h = 600
+mouse_ctrl = true
 local playing = true
 local black = {
   0,
@@ -36,6 +37,7 @@ love.load = function()
   }
 end
 love.update = function(dt)
+  mouse_x = love.mouse.getX()
   if ball.y > border.h then
     playing = false
   end
@@ -53,8 +55,9 @@ love.update = function(dt)
 end
 love.draw = function()
   if playing == true then
-    love.graphics.print(ball.x_vel, 10, 10)
-    love.graphics.print(ball.y_vel, 10, 25)
+    love.graphics.print(ball.x_vel, 10, 25)
+    love.graphics.print(ball.y_vel, 10, 40)
+    love.graphics.print(mouse_x, 10, 60)
     love.graphics.setBackgroundColor(bg_color)
     love.graphics.setColor(fg_color)
     ball:draw()

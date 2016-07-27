@@ -5,6 +5,8 @@ Block = require 'lib.block'
 win_w = 800
 win_h = 600
 
+export mouse_ctrl = true
+
 playing = true
 
 black = {0, 0, 0}
@@ -37,6 +39,8 @@ love.load = ->
 
 love.update = (dt) ->
 
+	export mouse_x = love.mouse.getX!
+
 	if ball.y > border.h
 		playing = false
 
@@ -55,8 +59,10 @@ love.update = (dt) ->
 love.draw = ->
 
 	if playing == true
-		love.graphics.print ball.x_vel, 10, 10
-		love.graphics.print ball.y_vel, 10, 25
+		love.graphics.print ball.x_vel, 10, 25
+		love.graphics.print ball.y_vel, 10, 40
+
+		love.graphics.print mouse_x, 10, 60
 
 		love.graphics.setBackgroundColor bg_color
 

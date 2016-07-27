@@ -1,18 +1,28 @@
+
+win_w, win_h = love.window.getMode()
+
 class Player
 	new: (@x, @y, @w, @h, @is_alive, @x_vel) =>
 
 	update: (dt) =>
 		--moves player--
-		@x = @x + @x_vel
 
-		if love.keyboard.isDown 'right'
-			@x_vel = 10
+		if mouse_ctrl
+			mouse_x = love.mouse.getX!
+			
+			@x = mouse_x - @w/2
 
-		elseif love.keyboard.isDown 'left'
-			@x_vel = -10
+		else
+			@x = @x + @x_vel
 
-		else 
-			@x_vel = 0
+			if love.keyboard.isDown 'right'
+				@x_vel = 10
+
+			elseif love.keyboard.isDown 'left'
+				@x_vel = -10
+
+			else 
+				@x_vel = 0
 
 		--player collisions--
 

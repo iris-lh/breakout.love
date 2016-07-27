@@ -1,15 +1,21 @@
+local win_w, win_h = love.window.getMode()
 local Player
 do
   local _class_0
   local _base_0 = {
     update = function(self, dt)
-      self.x = self.x + self.x_vel
-      if love.keyboard.isDown('right') then
-        self.x_vel = 10
-      elseif love.keyboard.isDown('left') then
-        self.x_vel = -10
+      if mouse_ctrl then
+        local mouse_x = love.mouse.getX()
+        self.x = mouse_x - self.w / 2
       else
-        self.x_vel = 0
+        self.x = self.x + self.x_vel
+        if love.keyboard.isDown('right') then
+          self.x_vel = 10
+        elseif love.keyboard.isDown('left') then
+          self.x_vel = -10
+        else
+          self.x_vel = 0
+        end
       end
       if ball.y + ball.h >= self.y and ball.y + ball.h < self.y + self.h / 2 and ball.x < self.x + self.w and ball.x + ball.w > self.x then
         ball.y_vel = ball.y_vel * -1
