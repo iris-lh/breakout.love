@@ -1,6 +1,7 @@
 Player = require 'lib.player'
 Ball = require 'lib.ball'
 Block = require 'lib.block'
+require 'settings'
 
 export win_w, win_h = love.window.getMode!
 
@@ -8,14 +9,6 @@ export win_w, win_h = love.window.getMode!
 love.mouse.setGrabbed true
 love.mouse.setVisible false
 
-export mouse_ctrl = true
-
-camera_enabled = false
-
-black = {0, 0, 0}
-white = {255, 255, 255}
-fg_color = white
-bg_color = black
 
 blocks_w = 100
 blocks_h = 35
@@ -28,7 +21,7 @@ love.load = ->
 	export gamestate = 'playing'
 
 	export border = { x:0, y:0, w:win_w, h:win_h }
-	export ball = Ball 380, 500, 20, 20, 12, -12, '', true
+	export ball = Ball 380, 500, 20, 20, ball_x_vel, ball_y_vel, '', true
 
 	export elements = {
 
@@ -96,7 +89,7 @@ love.update = (dt) ->
 			if element.is_alive == true
 				element\update!	
 	
-		--ball\update!
+		ball\update!
 	
 	if love.keyboard.isDown 'escape'
 		love.event.quit!
