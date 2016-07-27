@@ -28,7 +28,7 @@ love.load = ->
 	export gamestate = 'playing'
 
 	export border = { x:0, y:0, w:win_w, h:win_h }
-	export ball = Ball 380, 500, 20, 20, 12, -12, '', true
+	export ball = Ball 380, 500, 20, 20, 7, -7, '', true
 
 	export elements = {
 
@@ -96,7 +96,7 @@ love.update = (dt) ->
 			if element.is_alive == true
 				element\update!	
 	
-		--ball\update!
+		ball\update!
 	
 	if love.keyboard.isDown 'escape'
 		love.event.quit!

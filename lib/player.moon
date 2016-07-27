@@ -1,10 +1,17 @@
-
 win_w, win_h = love.window.getMode()
+
+--some fancy phi math
+--a = @w*0.2764
+--b = a*1.618
+
+
 
 class Player
 	new: (@x, @y, @w, @h, @is_alive, @x_vel) =>
 
 	update: (dt) =>
+		a = @w*0.2764
+		b = a*1.618
 		--moves player--
 
 		if mouse_ctrl
@@ -31,6 +38,30 @@ class Player
 		if ball.y + ball.h >= @y and ball.y + ball.h < @y + @h / 2 and
 			ball.x < @x + @w and ball.x + ball.w > @x  
 			ball.y_vel *= -1
+
+			if (ball.x >= @x) and (ball.x <= @x+a)
+				if ball.x_vel > 0
+					ball.x_vel *= -1
+					
+				ball.x_vel *= 1.3
+				ball.y_vel *= 1.1
+
+				
+
+			elseif (ball.x > @x+a) and (ball.x < @x+a+b)
+				ball.x_vel *= 0.6
+				ball.y_vel *= 0.9
+				
+
+			elseif (ball.x >= @x+a+b) and (ball.x <= @x+a+a+b)
+
+				if ball.x_vel < 0
+					ball.x_vel *= -1
+
+				ball.x_vel *= 1.3
+				ball.y_vel *= 1.1
+				
+
 			
 		--left--
 		elseif ball.x + ball.w >= @x - @x_vel and ball.x + ball.w < @x + (@w / 4) and 
@@ -54,7 +85,7 @@ class Player
 			@x = border.w - @w
 
 	draw: =>
-		--some fancy phi math
+
 		a = @w*0.2764
 		b = a*1.618
 
